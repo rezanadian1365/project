@@ -27,13 +27,33 @@ class Movie:
             print("Invalid rating! Must be between 0 and 10")
 
 
-move1 = Movie("brakingbad", "cris", 2020, 9.7)
-move2 = Movie("punisher", "mickel", 1900, 8.2)
-move2.info()
-move1.info()
-move1.product()
-move2.product()
-move1.new_rating(9.8)
-move2.new_rating(2)
-move2.info()
-move1.info()
+class ManageFilm:
+    def __init__(self):
+        self.movies = []
+
+    def add_movie(self, movie):
+        self.movie = movie
+        self.movies.append(movie)
+        print(f"sucssessfull added {self.movie}")
+
+    def remove_movie(self, movie):
+        self.movie = movie
+        self.movies.remove(movie)
+        print(f"sucssessfull removed {self.movie}")
+
+    def list_movie():
+        pass
+
+
+# move1 = Movie("brakingbad", "cris", 2020, 9.7)
+# move2 = Movie("punisher", "mickel", 1900, 8.2)
+# move2.info()
+# move1.info()
+# move1.product()
+# move2.product()
+# move1.new_rating(9.8)
+# move2.new_rating(2)
+# move2.info()
+# move1.info()
+m1 = ManageFilm()
+m1.add_movie("mah")

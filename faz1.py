@@ -32,28 +32,25 @@ class ManageFilm:
         self.movies = []
 
     def add_movie(self, movie):
-        self.movie = movie
         self.movies.append(movie)
-        print(f"sucssessfull added {self.movie}")
+        print(f"sucssessfull added {movie.title}")
 
-    def remove_movie(self, movie):
-        self.movie = movie
-        self.movies.remove(movie)
-        print(f"sucssessfull removed {self.movie}")
-
-    def list_movie():
-        pass
+    def list_movie(self):
+        for movie in self.movies:
+            movie.info
 
 
-# move1 = Movie("brakingbad", "cris", 2020, 9.7)
-# move2 = Movie("punisher", "mickel", 1900, 8.2)
-# move2.info()
-# move1.info()
-# move1.product()
-# move2.product()
-# move1.new_rating(9.8)
-# move2.new_rating(2)
-# move2.info()
-# move1.info()
+move1 = Movie("brakingbad", "cris", 2020, 9.7)
+move2 = Movie("punisher", "mickel", 1900, 8.2)
+move2.info()
+move1.info()
+move1.product()
+move2.product()
+move1.new_rating(9.8)
+move2.new_rating(2)
+move2.info()
+move1.info()
 m1 = ManageFilm()
-m1.add_movie("mah")
+m1.add_movie(move1)
+m1.add_movie(move2)
+m1.list_movie()

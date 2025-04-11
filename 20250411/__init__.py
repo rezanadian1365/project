@@ -1,6 +1,6 @@
 # __init__
 class Student:
-    def __inuit__(self, name, grade):
+    def __init__(self, name, grade):
         self.name = name
         self.grade = grade
 
@@ -11,5 +11,9 @@ class Student:
             return False
 
 
-s1 = Student("reza", 99)
+s1 = Student("reza", 60)
 s1.is_passing()
+s1.name
+s1.grade
+print(f"{Student.__name__}")
+print(f"{s1.name}  {s1.grade}")

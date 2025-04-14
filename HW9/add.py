@@ -1,16 +1,20 @@
-# class Add:
-class Add:
-    def __init__(self, *args: int):
-        for arg in args:
-            if not isinstance(arg, int):
-                raise TypeError("args just intiger")
-        self.args = args
-
-    def add(self):
-
-        res = sum(self.args)
-        print(f"{res}")
+# class add R&D __call__
+class BaseCalculate:
+    def __init__(self, total: int = 0):
+        self.total = total
 
 
-a = Add(2, 5, 3, 4)
-print(a.add())
+class Add(BaseCalculate):
+
+    def __call__(self, args: int):
+        if not isinstance(args, int):
+            raise TypeError("args just intiger")
+        else:
+            return Add(self.total + args)
+
+    def __str__(self):
+        return f"{self.total}"
+
+
+a = Add()
+print(a(1)(2)(3))

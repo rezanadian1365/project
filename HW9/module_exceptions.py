@@ -1,14 +1,20 @@
 # exceptions
-class AuthException:
-    pass
+
+
+class AuthException(Exception):
+    def __init__(self, user, password):
+        super().__init__(self, user, password)
 
 
 class UsernameAlreadyExists(AuthException):
-    pass
+    def __init__(self, user):
+        super().__init__(user)
+        print("this is user is already")
 
 
 class PasswordTooShort(AuthException):
-    pass
+    def __init__(self, password):
+        super().__init__(password)
 
 
 class InvalidUsername(AuthException):

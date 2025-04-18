@@ -16,5 +16,5 @@ class Add(BaseCalculate):
         return f"{self.total}"
 
 
-a = Add()
-print(a(0)(1)(2)(3)(100))
+# a = Add()
+print(Add(0)(1)(2)(3)(100))

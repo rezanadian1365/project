@@ -1,8 +1,10 @@
 # auth
-from module_exceptions import UsernameAlreadyExists
-from module_exceptions import PasswordTooShort
-from module_exceptions import InvalidUsername
-from module_exceptions import IncorrectPassword
+from module_exceptions import (
+    UsernameAlreadyExists,
+    IncorrectPassword,
+    PasswordTooShort,
+    InvalidUsername,
+)
 
 
 class Authenticator:
@@ -50,5 +52,5 @@ aut.user_add()
 aut.login()
 print(aut.is_logged_on(), "user is login")
 aut.log_out()
-# aut = Authenticator("Reza", "12345678")
-# aut.user_add()
+aut = Authenticator("Reza", "12345678")
+aut.user_add()

@@ -1,11 +1,25 @@
 # pickle & pickletools
 import pickle
 
-data = ["apple", "banana", "cherry"]
-with open("data.pkl", "wb") as f:
-    pickle.dump(data, f)
+import pickletools as pt
 
-import pickletools
 
-with open("data.pkl", "rb") as f:
-    pickletools.dis(f)
+class AppSettings:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self, theme="dark", language="English"):
+
+        self.theme = theme
+        self.language = language
+
+    def toggle_theme(self):
+        if self.theme == "dark":
+            self.theme == "light"
+        else:
+            self.theme == "dark"
+            print(f"theme changed to {self.theme}")

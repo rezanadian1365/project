@@ -27,3 +27,19 @@ class AppSettings:
     def change_language(self, language):
         self.language = language
         print(f"language changed to {self.language}")
+
+
+with open("AppSettings.pkl", "wb") as file:
+    pickle.dump("AppSettings", file)
+    print("AppSettings saved to AppSettings.pkl")
+
+
+with open("AppSettings.pkl", "rb") as file:
+    data = pickle.load(file)
+    print("AppSettings loaded from AppSettings.pkl")
+    print(data)
+settings = AppSettings()
+print(f"Settings:{settings.theme},{settings.language}")
+settings.toggle_theme()
+settings.change_language("Spanish")
+print(f"settings:{settings.theme},{settings.language}")

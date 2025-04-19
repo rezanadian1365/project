@@ -23,3 +23,7 @@ class AppSettings:
         else:
             self.theme == "dark"
             print(f"theme changed to {self.theme}")
+
+    def change_language(self, language):
+        self.language = language
+        print(f"language changed to {self.language}")

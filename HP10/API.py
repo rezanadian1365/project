@@ -10,7 +10,7 @@ url = "https://reqres.in/api/login"
 login_data = {"email": "eve.holt@reqres.in", "password": "cityslicka"}
 url = "https://reqres.in/api/login"
 response = requests.post(url, json=login_data)
-if response.status_code == 201:
+if response.status_code == 200:
     print("data sent successfully")
     print(response.json())
     print(response.status_code)

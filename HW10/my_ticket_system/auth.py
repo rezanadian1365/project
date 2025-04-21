@@ -9,10 +9,19 @@ class Auth:
 
     def validate_user(self):
         user_pass = {}
-        with open("userpass.txt", "r") as f:
+        with open(
+            "c:/Users/rezaNadian/Desktop/hw6/HW10/my_ticket_system/userpass.txt", "r"
+        ) as f:
             for line in f:
                 key, value = line.strip().split("=")
-                user_pass[user] = passw
+                user_pass[key] = value
+        print(
+            {
+                key: (value if key != "password" else "*" * len(value))
+                for key, value in user_pass.items()
+            }
+        )
+
         if (
             self.username == user_pass["username"]
             and self.password == user_pass["password"]

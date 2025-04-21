@@ -8,13 +8,22 @@ class Auth:
         self.password = input("Enter password:")
 
     def validate_user(self):
+        user_pass = {}
         with open("userpass.txt", "r") as f:
             for line in f:
-                user, passw = line.strip().split("=")
-                if user == self.username and passw == self.password:
-                    print("login successful")
-                    return True
+                key, value = line.strip().split("=")
+                user_pass[user] = passw
+        if (
+            self.username == user_pass["username"]
+            and self.password == user_pass["password"]
+        ):
+            print("login successful")
+            return True
+        else:
+            print("login failed")
+            return False
 
 
 admin = Auth()
 admin.login()
+admin.validate_user()

@@ -1,0 +1,8 @@
+event name:EBI,event capacity:500,event date:1405,event time : 13,event location:bandarabbas
+event name:daryoosh,event capacity:400,event date:1404,event time : 12,event location:bnd
+event name:arash,event capacity:100,event date:1404,event time : 12,event location:bnd
+event name:reza,event capacity:1000,event date:1404,event time : 16,event location:bnd
+event name:dd,event capacity:12,event date:1404,event time : 12,event location:tehran
+event name:erfanhalghe,event capacity:12000,event date:1404,event time : 15,event location:iran
+event name:leila,event capacity:1200,event date:1404,event time : 1,event location:bnd
+event name:& C:/Users/rezaNadian/AppData/Local/Programs/Python/Python313/python.exe c:/Users/rezaNadian/Desktop/hw6/HW10/my_ticket_system/main.py,event capacity:12,event date:12,event time : 12,event location:12

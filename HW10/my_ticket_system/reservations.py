@@ -1,1 +1,2 @@
-# reservations
+class reservations:
+    

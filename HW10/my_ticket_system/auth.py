@@ -1,4 +1,9 @@
 class Auth:
+    """
+    this class is used admin authentication
+    read username and password from userpass.txt file
+    check if the username and password are correct"""
+
     def __init__(self, username=None, password=None):
         self.username = username
         self.password = password
@@ -8,6 +13,7 @@ class Auth:
         self.password = input("Enter password:")
 
     def validate_user(self):
+
         user_pass = {}
         with open(
             "c:/Users/rezaNadian/Desktop/hw6/HW10/my_ticket_system/userpass.txt", "r"
@@ -31,8 +37,3 @@ class Auth:
         else:
             print("login failed")
             return False
-
-
-admin = Auth()
-admin.login()
-admin.validate_user()

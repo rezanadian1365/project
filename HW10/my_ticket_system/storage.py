@@ -1,3 +1,6 @@
+from prettytable import PrettyTable
+
+
 class Storage:
     def __init__(self):
         """initialize storage class"""
@@ -31,19 +34,17 @@ class Storage:
         return False
 
     def save_to_file(self):
-        """save events to file"""
+        """overwrite events to file"""
         with open(
             "c:/Users/rezaNadian/Desktop/hw6/HW10/my_ticket_system/events.txt",
-            "a",
+            "w",  # حالت "w" برای بازنویسی کل فایل
             encoding="utf-8",
         ) as f:
             for event in self.event:
-                if not self.is_event_in_file(event):
-                    f.write(
-                        f"event name:{event['event_name']},event capacity:{event['event_capacity']},event date:{event['event_date']},event time : {event['event_time']},event location:{event['event_location']}"
-                    )
-                    f.write("\n")
-                    print("event saved to file and updated successfully")
+                f.write(
+                    f"event name:{event['event_name']},event capacity:{event['event_capacity']},event date:{event['event_date']},event time:{event['event_time']},event location:{event['event_location']}\n"
+                )
+        print("All events saved to file (updated)")
 
     def load_from_file(self):
         """load from file"""
@@ -72,16 +73,39 @@ class Storage:
         return self.event
 
     def display_event_menu(self):
-        """Display events as a menu and allow user to choose an event"""
+        """Display events as a table and allow user to choose an event"""
         if not self.event:
             print("No events available.")
             return None
 
-        print("Please select an event from the list below:")
+        # Create a table object
+        table = PrettyTable()
+
+        # Define table headers
+        table.field_names = [
+            "Event #",
+            "Event Name",
+            "Date",
+            "Time",
+            "Remaining Capacity",
+            "Location",
+        ]
+
+        # Add events to the table
         for i, event in enumerate(self.event, 1):
-            print(
-                f"{i}. {event['event_name']} - {event['event_date']} at {event['event_time']} (Capacity: {event['event_capacity']}, Location: {event['event_location']})"
+            table.add_row(
+                [
+                    i,
+                    event["event_name"],
+                    event["event_date"],
+                    event["event_time"],
+                    event["event_capacity"],
+                    event["event_location"],
+                ]
             )
+
+        # Print the table
+        print(table)
 
         try:
             event_choice = int(
@@ -97,3 +121,33 @@ class Storage:
         except ValueError:
             print("Invalid input. Please enter a number.")
             return None
+
+    def reserve_ticket(self, selected_event, user_email):
+        """Reserve a ticket for the selected event"""
+        for event in self.event:
+            if event == selected_event:
+                if event["event_capacity"] > 0:
+                    event["event_capacity"] -= 1
+                    print(
+                        f"Ticket reserved for {user_email} for event: {event['event_name']}"
+                    )
+                    self.save_to_file()
+                    self.save_reservation(user_email, event)
+                    return True
+                else:
+                    print("Sorry, this event is fully booked.")
+                    return False
+        print("Event not found.")
+        return False
+
+    def save_reservation(self, user_email, event):
+        """Save reservation info to a separate file"""
+        with open(
+            "c:/Users/rezaNadian/Desktop/hw6/HW10/my_ticket_system/reservations.txt",
+            "a",
+            encoding="utf-8",
+        ) as f:
+            f.write(
+                f"{user_email},{event['event_name']},{event['event_date']},{event['event_time']}\n"
+            )
+            print("Reservation saved.")

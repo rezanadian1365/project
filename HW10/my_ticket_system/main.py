@@ -1,6 +1,8 @@
 from storage import Storage
 from events import Events
 from auth import Auth
+from prettytable import PrettyTable
+
 
 admin = Auth()
 print("welcome to my ticket system")
@@ -19,3 +21,10 @@ if display == "y":
         print(f"you selected {display_event['event_name']}")
     else:
         print("No event selected.")
+
+user_email = input("Enter your email to reserve a ticket: ")
+success = store.reserve_ticket(display_event, user_email)
+if success:
+    print("Reservation completed successfully!")
+else:
+    print("Reservation failed.")
